@@ -1,10 +1,3 @@
-;;;; Building an image file:
-;;;; ,open os-strings
-;;;; ,load example-music.scm (do this 2 times - maybe it's a s48 bug)
-;;;; ,unset levels (this will not push the level number for the debugger)
-;;;; ,flush source maps
-;;;; ,build main game.image
-
 (load "s48_raylib.scm")
 (load "colors.scm")
 (load "helper-macros.scm")
@@ -19,7 +12,7 @@
       (set! args (map os-string->string args)))
 
   (with-audio-device
-    (with-music-stream music "music.xm"
+    (with-music-stream music "Insert your music file here"
       (setmusicvolume music 0.25)
       (playmusicstream music)
       (with-window "Raylib and Scheme48!" screen-width screen-height
