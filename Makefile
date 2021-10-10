@@ -10,4 +10,4 @@ $(filename).so: $(filename).c
 .PHONY: clean
 
 clean:
-	rm $(filename).*
+	rm $(filename).so
