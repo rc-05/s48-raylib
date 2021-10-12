@@ -97,23 +97,41 @@ double vector3_z_ref(Vector3* vec) {
  */
 
 /*
-s48_ref_t stub_GetDirectoryFiles(s48_call_t call, s48_ref_t arg0, s48_ref_t arg1) {
-  char** temp = GetDirectoryFiles(s48_extract_utf_8_from_string_2(call, arg0), s48_extract_value_pointer_2(call, arg1, int*));
-  s48_ref_t result = s48_make_vector_2(call, *s48_extract_value_pointer_2(call, arg1, int*), s48_unspecific_2(call));
-  for (long i = 0; i < *s48_extract_value_pointer_2(call, arg1, int*); ++i) {
-    s48_vector_set_2(call, result, i, s48_enter_string_utf_8_2(call, *temp[i]));
+s48_ref_t stub_GetDirectoryFiles(s48_call_t call, s48_ref_t arg0) {
+  int temp1;
+  char** temp2 = GetDirectoryFiles(s48_extract_utf_8_from_string_2(call, arg0), &temp1);
+  s48_ref_t temp3 = s48_make_vector_2(call, temp1, s48_unspecific_2(call));
+
+  for (long i = 0; i < temp1; ++i) {
+    s48_vector_set_2(call, temp3, i, s48_enter_string_utf_8_2(call, temp2[i]));
   }
+
+  // '(temp1)
+  s48_ref_t result;
+  result = s48_cons_2(call, s48_enter_long_2(call, temp1),
+  // '(temp1 temp3)
+  s48_cons_2(call, temp3, s48_null_2(call)));
+
   return result;
 }
 */
 
 /*
-s48_ref_t stub_GetDroppedFiles(s48_call_t call, s48_ref_t arg0) {
-  char** temp = GetDroppedFiles(s48_extract_value_pointer_2(call, arg0, int*));
-  s48_ref_t result = s48_make_vector_2(call, *s48_extract_value_pointer_2(call, arg0, int*), s48_unspecific_2(call));
-  for (long i = 0; i < *s48_extract_value_pointer_2(call, arg0, int*); ++i) {
-    s48_vector_set_2(call, result, i, s48_enter_string_utf_8_2(call, *temp[i]));
+s48_ref_t stub_GetDroppedFiles(s48_call_t call) {
+  int temp1;
+  char** temp2 = GetDroppedFiles(&temp1);
+  s48_ref_t temp3 = s48_make_vector_2(call, temp1, s48_unspecific_2(call));
+
+  for (long i = 0; i < temp1; ++i) {
+    s48_vector_set_2(call, temp3, i, s48_enter_string_utf_8_2(call, temp2[i]));
   }
+
+  // '(temp1)
+  s48_ref_t result;
+  result = s48_cons_2(call, s48_enter_long_2(call, temp1),
+  // '(temp1 temp3)
+  s48_cons_2(call, temp3, s48_null_2(call)));
+
   return result;
 }
 */
