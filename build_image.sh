@@ -2,6 +2,7 @@
 
 build_image() {
   echo ",unset levels"
+  echo ",set batch"
   echo ",open external-calls load-dynamic-externals byte-vectors os-strings"
   echo ",load example-music.scm"
   echo ",load example-music.scm"
